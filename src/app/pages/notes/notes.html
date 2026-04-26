@@ -1,1 +1,37 @@
-<p>notes works!</p>
+<div class="notes-page">
+    <header class="notes-header">
+        <div class="stat">
+            <span class="stat-label">전체</span>
+            <span class="stat-value">{{ service.noteCount() }}</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label">⭐ 즐겨찾기</span>
+            <span class="stat-value">{{ service.favoriteCount() }}</span>
+        </div>
+    </header>
+
+    <ul class="note-list">
+        @for (item of service.notes(); track item.id) {
+        <li class="note-card" [class.is-favorite]="item.favorite">
+            <div class="note-header">
+                <h3 class="note-title">{{ item.title }}</h3>
+                <span class="note-fav">{{ item.favorite ? '⭐' : '☆' }}</span>
+            </div>
+            <p class="note-content">{{ item.content }}</p>
+            <div class="note-footer">
+                <time class="note-date">{{ item.createdAt | date: 'yyyy-MM-dd HH:mm' }}</time>
+                <div class="note-actions">
+                    <button type="button" (click)="service.toggleFavorite(item.id)">
+                        {{ item.favorite ? '★ Unfav' : '☆ Fav' }}
+                    </button>
+                    <button type="button" class="danger" (click)="service.removeNote(item.id)">
+                        🗑 Delete
+                    </button>
+                </div>
+            </div>
+        </li>
+        } @empty {
+        <li class="empty-state">노트가 없습니다.</li>
+        }
+    </ul>
+</div>

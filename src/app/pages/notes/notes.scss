@@ -1,0 +1,155 @@
+:host {
+  display: block;
+}
+
+.notes-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+// === Header (통계) ===
+.notes-header {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+
+    &-label {
+      font-size: 0.75rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    &-value {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+  }
+}
+
+// === 리스트 ===
+.note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+// === 카드 ===
+.note-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s;
+
+  &:hover {
+    border-color: #c0c0c0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transform: translateY(-1px);
+  }
+
+  &.is-favorite {
+    border-left: 3px solid #f5b400;
+  }
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.note-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.note-fav {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.note-content {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.note-date {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+// === 액션 버튼 ===
+.note-actions {
+  display: flex;
+  gap: 0.375rem;
+
+  button {
+    font-family: inherit;
+    font-size: 0.75rem;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    background: #fafafa;
+    color: #333;
+    cursor: pointer;
+    transition:
+      background 0.15s,
+      border-color 0.15s;
+
+    &:hover {
+      background: #f0f0f0;
+      border-color: #b0b0b0;
+    }
+
+    &.danger:hover {
+      background: #fee;
+      border-color: #d99;
+      color: #c00;
+    }
+  }
+}
+
+// === Empty state ===
+.empty-state {
+  list-style: none;
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 0.875rem;
+  background: #fafafa;
+  border: 1px dashed #d0d0d0;
+  border-radius: 8px;
+}
