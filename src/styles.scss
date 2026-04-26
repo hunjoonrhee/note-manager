@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --font-mono: 'Victor Mono NF', 'Victor Mono', 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+body {
+  font-family: var(--font-mono);
+  margin: 0;
+}
