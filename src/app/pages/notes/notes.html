@@ -11,7 +11,7 @@
     </header>
 
     <ul class="note-list">
-        @for (item of service.notes(); track item.id) {
+        @for (item of sortedNotes(); track item.id) {
         <li class="note-card" [class.is-favorite]="item.favorite">
             <div class="note-header">
                 <h3 class="note-title">{{ item.title }}</h3>
