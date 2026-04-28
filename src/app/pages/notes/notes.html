@@ -19,7 +19,7 @@
             </div>
             <p class="note-content">{{ item.content }}</p>
             <div class="note-footer">
-                <time class="note-date">{{ item.createdAt | date: 'yyyy-MM-dd HH:mm' }}</time>
+                <time class="note-date">{{ item.createdAt | relativeTime }}</time>
                 <div class="note-actions">
                     <button type="button" (click)="service.toggleFavorite(item.id)">
                         {{ item.favorite ? '★ Unfav' : '☆ Fav' }}

@@ -1,10 +1,10 @@
 import { Component, computed, inject } from '@angular/core';
 import { NoteService } from '../../services/note-service';
-import { DatePipe } from '@angular/common';
+import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
 
 @Component({
   selector: 'app-notes',
-  imports: [DatePipe],
+  imports: [RelativeTimePipe],
   templateUrl: './notes.html',
   styleUrl: './notes.scss',
 })
