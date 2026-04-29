@@ -1,0 +1,25 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="Title" formControlName="title" />
+  @if (formGroup.controls.title.touched && formGroup.controls.title.errors) {
+    @let titleErrors = formGroup.controls.title.errors;
+    @if (titleErrors['required']) {
+      <small class="error">제목은 필수입니다</small>
+    }
+    @if (titleErrors['minlength']) {
+      <small class="error">제목은 최소 3자 이상이어야 합니다</small>
+    }
+    @if (titleErrors['maxlength']) {
+      <small class="error">제목은 50자를 넘을 수 없습니다</small>
+    }
+    @if (titleErrors['profanityError']) {
+      <small class="error">금지된 단어가 포함되어 있습니다: "{{ titleErrors['profanityError'] }}"</small>
+    }
+  }
+  <textarea placeholder="Write something..." formControlName="content" rows="3"></textarea>
+  @if (formGroup.controls.content.touched && formGroup.controls.content.errors) {
+    @if (formGroup.controls.content.errors['required']) {
+      <small class="error">내용은 필수입니다</small>
+    }
+  }
+  <button type="submit" [disabled]="formGroup.invalid || formGroup.pristine">Add note</button>
+</form>

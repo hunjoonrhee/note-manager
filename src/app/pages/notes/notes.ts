@@ -1,10 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
 import { NoteService } from '../../services/note-service';
 import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
+import { NoteForm } from '../../forms/note-form/note-form';
 
 @Component({
   selector: 'app-notes',
-  imports: [RelativeTimePipe],
+  imports: [RelativeTimePipe, NoteForm],
   templateUrl: './notes.html',
   styleUrl: './notes.scss',
 })

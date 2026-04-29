@@ -10,6 +10,10 @@
         </div>
     </header>
 
+    <div>
+        <app-note-form />
+    </div>
+
     <ul class="note-list">
         @for (item of sortedNotes(); track item.id) {
         <li class="note-card" [class.is-favorite]="item.favorite">

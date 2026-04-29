@@ -1,0 +1,97 @@
+:host {
+  display: block;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+
+  &:focus-within {
+    border-color: #999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background: #fafafa;
+  color: #1a1a1a;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #555;
+    background: #fff;
+  }
+
+  &.ng-invalid.ng-touched {
+    border-color: #d33;
+    background: #fff5f5;
+  }
+}
+
+textarea {
+  resize: vertical; // 사용자가 세로로만 크기 조절 가능
+  min-height: 4rem;
+  line-height: 1.5;
+  font-family: inherit; // 기본 textarea 폰트가 monospace로 다르게 나오는 브라우저 있음
+}
+
+button[type='submit'] {
+  align-self: flex-end;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  background: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+
+  &:hover:not(:disabled) {
+    background: #333;
+  }
+
+  &:disabled {
+    background: #d0d0d0;
+    border-color: #d0d0d0;
+    cursor: not-allowed;
+  }
+}
+
+textarea {
+  resize: vertical; // 사용자가 세로로만 크기 조절 가능
+  min-height: 4rem;
+  line-height: 1.5;
+  font-family: inherit; // 기본 textarea 폰트가 monospace로 다르게 나오는 브라우저 있음
+}
+
+.error {
+  color: #d33;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
