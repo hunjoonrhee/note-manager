@@ -1,1 +1,13 @@
-<p>settings works!</p>
+<div class="settings-page">
+  <div class="settings-section">
+    <h3>Appearence</h3>
+    <p>Toggle dark mode - applied via ThemeService signal</p>
+    <div class="theme-buttons">
+      @for (theme of themeConfig.themes; track theme) {
+        <button (click)="toggleTheme(theme)" [class.active]="themeConfig.currentTheme() === theme">
+          {{ theme }}
+        </button>
+      }
+    </div>
+  </div>
+</div>

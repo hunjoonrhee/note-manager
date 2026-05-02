@@ -6,31 +6,28 @@ input[type='text'] {
   width: 100%;
   font-family: inherit;
   font-size: 0.875rem;
-  padding: 0.625rem 0.875rem 0.625rem 2.25rem; // 좌측 패딩 — 아이콘 자리
-  border: 1px solid #d0d0d0;
+  padding: 0.625rem 0.875rem 0.625rem 2.25rem;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  background-color: #fafafa;
+  background-color: var(--surface);
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.35-4.35'/></svg>");
   background-repeat: no-repeat;
   background-position: 0.75rem center;
-  color: #1a1a1a;
-  transition:
-    border-color 0.15s,
-    background-color 0.15s,
-    box-shadow 0.15s;
+  color: var(--text);
+  transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
 
   &::placeholder {
-    color: #999;
+    color: var(--text-hint);
   }
 
   &:focus {
     outline: none;
-    border-color: #555;
-    background-color: #fff;
+    border-color: var(--border-hover);
+    background-color: var(--bg);
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
   }
 
   &:hover:not(:focus) {
-    border-color: #b0b0b0;
+    border-color: var(--border-hover);
   }
 }

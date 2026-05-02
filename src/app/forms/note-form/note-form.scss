@@ -6,16 +6,14 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  background: #fff;
-  border: 1px solid #e5e5e5;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 1rem 1.25rem;
-  transition:
-    border-color 0.15s,
-    box-shadow 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 
   &:focus-within {
-    border-color: #999;
+    border-color: var(--border-hover);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 }
@@ -25,35 +23,33 @@ textarea {
   font-family: inherit;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #d0d0d0;
+  border: 1px solid var(--border);
   border-radius: 4px;
-  background: #fafafa;
-  color: #1a1a1a;
-  transition:
-    border-color 0.15s,
-    background 0.15s;
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color 0.15s, background 0.15s;
 
   &::placeholder {
-    color: #999;
+    color: var(--text-hint);
   }
 
   &:focus {
     outline: none;
-    border-color: #555;
-    background: #fff;
+    border-color: var(--border-hover);
+    background: var(--bg);
   }
 
   &.ng-invalid.ng-touched {
-    border-color: #d33;
-    background: #fff5f5;
+    border-color: var(--error);
+    background: var(--error-bg);
   }
 }
 
 textarea {
-  resize: vertical; // 사용자가 세로로만 크기 조절 가능
+  resize: vertical;
   min-height: 4rem;
   line-height: 1.5;
-  font-family: inherit; // 기본 textarea 폰트가 monospace로 다르게 나오는 브라우저 있음
+  font-family: inherit;
 }
 
 button[type='submit'] {
@@ -62,35 +58,27 @@ button[type='submit'] {
   font-size: 0.875rem;
   font-weight: 600;
   padding: 0.5rem 1rem;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--btn-bg);
   border-radius: 4px;
-  background: #1a1a1a;
-  color: white;
+  background: var(--btn-bg);
+  color: var(--btn-text);
   cursor: pointer;
-  transition:
-    background 0.15s,
-    border-color 0.15s;
+  transition: opacity 0.15s;
 
   &:hover:not(:disabled) {
-    background: #333;
+    opacity: 0.85;
   }
 
   &:disabled {
-    background: #d0d0d0;
-    border-color: #d0d0d0;
+    background: var(--border);
+    border-color: var(--border);
+    color: var(--text-hint);
     cursor: not-allowed;
   }
 }
 
-textarea {
-  resize: vertical; // 사용자가 세로로만 크기 조절 가능
-  min-height: 4rem;
-  line-height: 1.5;
-  font-family: inherit; // 기본 textarea 폰트가 monospace로 다르게 나오는 브라우저 있음
-}
-
 .error {
-  color: #d33;
+  color: var(--error);
   font-size: 0.75rem;
   margin-top: 0.25rem;
   display: block;

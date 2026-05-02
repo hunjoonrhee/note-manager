@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { Notes } from './pages/notes/notes';
-import { Settings } from './pages/settings/settings';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'notes', pathMatch: 'full' },

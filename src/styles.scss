@@ -1,9 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
   --font-mono: 'VictorMono NF', 'Victor Mono', 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+body.light {
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --surface-alt: #f5f5f5;
+  --text: #1a1a1a;
+  --text-muted: #666666;
+  --text-hint: #999999;
+  --border: #e5e5e5;
+  --border-hover: #b0b0b0;
+  --btn-bg: #1a1a1a;
+  --btn-text: #ffffff;
+  --error: #d33;
+  --error-bg: #fff5f5;
+  --favorite: #f5b400;
+}
+
+body.dark {
+  --bg: #1a1a1a;
+  --surface: #2a2a2a;
+  --surface-alt: #333333;
+  --text: #ffffff;
+  --text-muted: #aaaaaa;
+  --text-hint: #777777;
+  --border: #444444;
+  --border-hover: #666666;
+  --btn-bg: #ffffff;
+  --btn-text: #1a1a1a;
+  --error: #ff6b6b;
+  --error-bg: #3a1a1a;
+  --favorite: #f5b400;
+}
+
 body {
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-mono);
   margin: 0;
 }
