@@ -1,8 +1,8 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { NoteService } from '../../services/note-service';
-import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { NoteForm } from '../../forms/note-form/note-form';
 import { NoteSearch } from '../../forms/note-search/note-search';
+import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
+import { NoteService } from '../../services/note-service';
 
 @Component({
   selector: 'app-notes',
@@ -29,7 +29,6 @@ export class Notes {
   readonly filteredNotes = computed(() => {
     const searchTerm = this.searchTerm().toLowerCase();
     const currentNotes = this.sortedNotes();
-    console.log(searchTerm);
 
     if (!searchTerm) return currentNotes;
     return currentNotes.filter(

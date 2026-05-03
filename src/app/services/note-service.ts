@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, effect, Injectable, signal } from '@angular/core';
 import { Note } from '../models/note';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -79,7 +79,7 @@ const SEED_NOTES: Note[] = [
   providedIn: 'root',
 })
 export class NoteService {
-  private readonly _notes = signal<Note[]>(SEED_NOTES);
+  private readonly _notes = signal<Note[]>([]);
   readonly notes = this._notes.asReadonly();
 
   readonly favoriteCount = computed(() => {
@@ -91,6 +91,21 @@ export class NoteService {
     const notes = this.notes();
     return notes.length;
   });
+
+  constructor() {
+    const stored = localStorage.getItem('notes');
+    this._notes.set(
+      stored
+        ? JSON.parse(stored, (key, value) => {
+            return key === 'createdAt' ? new Date(value) : value;
+          })
+        : SEED_NOTES,
+    );
+
+    effect(() => {
+      localStorage.setItem('notes', JSON.stringify(this._notes()));
+    });
+  }
 
   addNote(newNoteData: { title: string; content: string }) {
     const newNote: Note = {
@@ -135,8 +150,6 @@ export class NoteService {
       return;
     }
 
-    this._notes.update((notes) =>
-      notes.map((note) => (note.id === id ? { ...note, favorite: !note.favorite } : note)),
-    );
+    this._notes.update((notes) => notes.map((note) => (note.id === id ? { ...note, favorite: !note.favorite } : note)));
   }
 }

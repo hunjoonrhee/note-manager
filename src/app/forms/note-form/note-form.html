@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <input type="text" placeholder="Title" formControlName="title" />
+  <input #titleInput type="text" placeholder="Title" formControlName="title" />
   @if (formGroup.controls.title.touched && formGroup.controls.title.errors) {
     @let titleErrors = formGroup.controls.title.errors;
     @if (titleErrors['required']) {
