@@ -1,14 +1,7 @@
 <div class="notes-page">
-  <header class="notes-header">
-    <div class="stat">
-      <span class="stat-label">전체</span>
-      <span class="stat-value">{{ service.noteCount() }}</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">⭐ 즐겨찾기</span>
-      <span class="stat-value">{{ service.favoriteCount() }}</span>
-    </div>
-  </header>
+  <div>
+    <app-stats-card />
+  </div>
 
   <div>
     <app-note-search [(searchTerm)]="searchTerm" />

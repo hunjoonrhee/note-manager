@@ -1,6 +1,6 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
-import { Note } from '../models/note';
 import { v4 as uuidv4 } from 'uuid';
+import { Note } from '../models/note';
 
 const SEED_NOTES: Note[] = [
   {
@@ -92,18 +92,38 @@ export class NoteService {
     return notes.length;
   });
 
+  readonly todayCount = computed(() => {
+    const notes = this.notes();
+    const today = new Date();
+    return notes.filter((note) => note.createdAt.toDateString() === today.toDateString()).length;
+  });
+
+  readonly bc = new BroadcastChannel('note-manager-sync');
+
   constructor() {
     const stored = localStorage.getItem('notes');
     this._notes.set(
-      stored
-        ? JSON.parse(stored, (key, value) => {
-            return key === 'createdAt' ? new Date(value) : value;
-          })
-        : SEED_NOTES,
+      stored ? JSON.parse(stored, (key, value) => (key === 'createdAt' ? new Date(value) : value)) : SEED_NOTES,
     );
+
+    let initialized = false;
+    let isSyncing = false;
+
+    this.bc.onmessage = () => {
+      const synced = localStorage.getItem('notes');
+      isSyncing = true;
+      this._notes.set(
+        synced ? JSON.parse(synced, (key, value) => (key === 'createdAt' ? new Date(value) : value)) : [],
+      );
+      isSyncing = false;
+    };
 
     effect(() => {
       localStorage.setItem('notes', JSON.stringify(this._notes()));
+      if (initialized && !isSyncing) {
+        this.bc.postMessage({ type: 'SYNC' });
+      }
+      initialized = true;
     });
   }
 

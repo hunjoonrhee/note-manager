@@ -1,18 +1,13 @@
-import {
-  ApplicationConfig,
-  inject,
-  InjectionToken,
-  provideAppInitializer,
-  provideBrowserGlobalErrorListeners,
-} from '@angular/core';
+import { ApplicationConfig, inject, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { provideZonelessChangeDetection } from '@angular/core';
 import { routes } from './app.routes';
 import { Theme, ThemeService } from './services/theme-service';
 import { ThemeConfig } from './tokens/theme.token';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZonelessChangeDetection(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideAppInitializer(() => {

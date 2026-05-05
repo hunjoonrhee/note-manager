@@ -1,4 +1,5 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { StatsCard } from '../../components/stats-card/stats-card';
 import { NoteForm } from '../../forms/note-form/note-form';
 import { NoteSearch } from '../../forms/note-search/note-search';
 import { RelativeTimePipe } from '../../pipes/relative-time-pipe';
@@ -6,7 +7,7 @@ import { NoteService } from '../../services/note-service';
 
 @Component({
   selector: 'app-notes',
-  imports: [RelativeTimePipe, NoteForm, NoteSearch],
+  imports: [RelativeTimePipe, NoteForm, NoteSearch, StatsCard],
   templateUrl: './notes.html',
   styleUrl: './notes.scss',
 })

@@ -1,0 +1,14 @@
+<section class="stats">
+  <article class="stat-card">
+    <span class="label">총 노트</span>
+    <span class="value">{{ service.noteCount() }}</span>
+  </article>
+  <article class="stat-card favorite">
+    <span class="label">즐겨찾기</span>
+    <span class="value">{{ service.favoriteCount() }}</span>
+  </article>
+  <article class="stat-card today">
+    <span class="label">오늘</span>
+    <span class="value">{{ service.todayCount() }}</span>
+  </article>
+</section>

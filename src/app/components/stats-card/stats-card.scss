@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  font-family: var(--font-mono);
+}
+
+.stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: var(--border-hover);
+  }
+
+  .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  &.favorite .value {
+    color: var(--favorite);
+  }
+
+  &.today {
+    // 오늘은 강조 살짝만 — surface-alt 배경
+    background: var(--surface-alt);
+  }
+}
